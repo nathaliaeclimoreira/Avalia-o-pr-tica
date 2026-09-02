@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilitador Diário - Acessível</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Topo do Site com Ferramentas de Acessibilidade -->
+    <header class="topo-site">
+        <div class="ajuste-texto">
+            <button onclick="alterarFonte(1)" aria-label="Aumentar o tamanho da letra">A+ Aumentar Letra</button>
+            <button onclick="alterarFonte(-1)" aria-label="Diminuir o tamanho da letra">A- Diminuir Letra</button>
+        </div>
+        <button id="btn-contraste" onclick="alternarContraste()" aria-label="Mudar para modo de alto contraste preto e amarelo">🌓 Alto Contraste</button>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container">
+        <header class="boas-vindas">
+            <h1>Ajuda para o Dia a Dia</h1>
+            <p>Escolha uma das funções abaixo clicando nos botões grandes.</p>
+        </header>
+
+        <!-- Seções de Ferramentas Úteis -->
+        <div class="grade-ferramentas">
+            
+            <!-- Ferramenta 1: Lembrete de Remédios -->
+            <section class="cartao-ferramenta">
+                <h2>💊 Alarme de Remédios</h2>
+                <p>Anote o nome do remédio e o horário para não esquecer.</p>
+                <div class="formulario">
+                    <label for="nome-remedio">Nome do Remédio:</label>
+                    <input type="text" id="nome-remedio" placeholder="Ex: Remédio da Pressão">
+                    
+                    <label for="hora-remedio">Horário:</label>
+                    <input type="time" id="hora-remedio">
+                    
+                    <button onclick="adicionarRemedio()">Salvar Lembrete</button>
+                </div>
+                <ul id="lista-remedios" class="lista-itens"></ul>
+            </section>
+
+            <!-- Ferramenta 2: Lista de Compras Simples -->
+            <section class="cartao-ferramenta">
+                <h2>🛒 Lista de Compras</h2>
+                <p>Marque o que precisa comprar no mercado.</p>
+                <div class="formulario">
+                    <label for="item-compra">O que precisa comprar?</label>
+                    <input type="text" id="item-compra" placeholder="Ex: Pão, Leite, Ovos">
+                    
+                    <button onclick="adicionarItemCompra()">Adicionar na Lista</button>
+                </div>
+                <ul id="lista-compras" class="lista-itens"></ul>
+            </section>
+
+            <!-- Ferramenta 3: Contatos de Emergência Rápidos -->
+            <section class="cartao-ferramenta">
+                <h2>📞 Telefones Úteis</h2>
+                <p>Clique no número para ligar direto (se usar o celular).</p>
+                <div class="lista-contatos">
+                    <a href="tel:192" class="botao-ligar emergencia">🚑 SAMU (192)</a>
+                    <a href="tel:193" class="botao-ligar emergencia">🚒 Bombeiros (193)</a>
+                    <a href="tel:190" class="botao-ligar emergencia">🚓 Polícia (190)</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Importação do arquivo de funcionalidades -->
+    <script src="script.js"></script>
+</body>
+</html>
