@@ -5,17 +5,14 @@ function alterarFonte(direcao) {
     const tamanhoAtual = parseFloat(window.getComputedStyle(html).fontSize);
     const novoTamanho = tamanhoAtual + direcao;
     
-    // Trava o tamanho entre 16px e 36px para evitar distorções graves de layout
-    if (novoTamanho >= 16 && novoTamanho <= 36) {
+    if (novoTamanho >= 16 && novoTamanho <= 40) {
         html.style.fontSize = novoTamanho + 'px';
     }
 }
 
 function alternarContraste() {
-    // Altera a classe adicionando e removendo as propriedades do modo escuro
     document.body.classList.toggle('modo-alto-contraste');
 }
-
 
 // --- INSTRUÇÕES INTERATIVAS DO WHATSAPP ---
 
@@ -24,7 +21,7 @@ function mostrarAjudaWhatsapp(tipo) {
     const titulo = document.getElementById('titulo-ajuda-wa');
     const texto = document.getElementById('texto-ajuda-wa');
     
-    caixa.style.display = "block"; // Torna o painel visível
+    caixa.style.display = "block";
 
     if (tipo === 'mensagem') {
         titulo.innerText = "💬 Como enviar Mensagem Escrita:";
@@ -43,7 +40,6 @@ function mostrarAjudaWhatsapp(tipo) {
 function fecharAjudaWhatsapp() {
     document.getElementById('caixa-explicacao-wa').style.display = "none";
 }
-
 
 // --- SISTEMA DE ALARMES E LISTAS ---
 

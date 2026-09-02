@@ -2,16 +2,16 @@
 :root {
     --fundo-site: #eef2f7;
     --fundo-quadrado: #ffffff;
-    --texto-principal: #0b1a30;    /* Azul marinho bem fechado para contraste máximo */
-    --borda-firme: #112244;        /* Contornos visíveis para isolar elementos */
-    --botao-cor-padrao: #0052cc;
+    --texto-principal: #0b1a30;    /* Azul marinho escuro (Contraste Máximo) */
+    --borda-firme: #112244;        /* Contornos visíveis para isolar os blocos */
+    --botao-cor-padrao: #0044cc;
     --botao-texto: #ffffff;
     --cor-emergencia: #b30000;
 }
 
-/* Base de texto em tamanho ampliado */
+/* --- FONTE AUMENTADA NATIVAMENTE --- */
 html {
-    font-size: 20px; 
+    font-size: 24px; /* Letras grandes por padrão em todo o site */
 }
 
 body {
@@ -23,14 +23,14 @@ body {
     line-height: 1.6;
 }
 
-/* --- ATIVAÇÃO CORRETA DO MODO ALTO CONTRASTE --- */
+/* --- ATIVAÇÃO CORRETA E INTEGRAL DO MOTO ALTO CONTRASTE --- */
 body.modo-alto-contraste {
     background-color: #000000 !important;
     color: #ffff00 !important; /* Toda letra fica amarela brilhante */
 }
 
-body.modo-alto-contraste .topo-site, 
-body.modo-alto-contraste .rodape-site,
+body.modo-alto-contraste .caixinha-topo, 
+body.modo-alto-contraste .caixinha-rodape,
 body.modo-alto-contraste .quadrado-funcao,
 body.modo-alto-contraste .caixa-texto-ajuda,
 body.modo-alto-contraste .lista-itens li {
@@ -46,7 +46,7 @@ body.modo-alto-contraste .btn-fechar {
     background-color: #ffff00 !important;
     color: #000000 !important;
     border: 4px solid #ffffff !important;
-    box-shadow: none !important; /* Remove efeito 3D no modo escuro */
+    box-shadow: none !important;
 }
 
 body.modo-alto-contraste input {
@@ -55,65 +55,66 @@ body.modo-alto-contraste input {
     border: 3px solid #ffff00 !important;
 }
 
-/* --- ESTRUTURA DO SITE --- */
+/* --- CENTRALIZAÇÃO E DESIGN EM CAIXINHAS --- */
 
-/* Cabeçalho */
-.topo-site {
-    background-color: #0b1a30;
-    color: #ffffff;
-    padding: 20px;
+.container {
+    max-width: 800px; 
+    margin: 30px auto;
+    padding: 0 20px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    border-bottom: 6px solid #0033aa;
-    text-align: center;
+    flex-direction: column;
+    gap: 35px;
 }
 
-.topo-site h1 {
-    margin: 0;
-    font-size: 1.8rem;
+/* Caixinha do Cabeçalho */
+.caixinha-topo {
+    background-color: var(--fundo-quadrado);
+    border: 4px solid var(--borda-firme);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 800px;
+    width: 90%;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.caixinha-topo h1 {
+    margin: 0 0 20px 0;
+    font-size: 2rem;
 }
 
 /* Painel superior de acessibilidade */
+.painel-acessibilidade {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .painel-acessibilidade button {
     background-color: #ffffff;
     color: #0b1a30;
     border: 3px solid #0052cc;
     padding: 12px 20px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 8px;
-    margin: 5px;
+    border-radius: 10px;
 }
 
-/* Layout centralizado */
-.container {
-    max-width: 750px; /* Alinha e centraliza tudo em formato de coluna única confortável */
-    margin: 0 auto;
-    padding: 30px 20px;
-    text-align: center;
-}
-
-.boas-vindas h2 {
-    font-size: 2.2rem;
-}
-
-.boas-vindas p {
-    font-size: 1.3rem;
-}
-
-/* Formato de Quadrados para Cada Função */
+/* Estilo de Cada Caixinha / Quadrado de Função (Tudo Centralizado) */
 .quadrado-funcao {
     background-color: var(--fundo-quadrado);
     border: 4px solid var(--borda-firme);
     border-radius: 20px;
     padding: 35px;
-    margin-bottom: 40px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    text-align: center; /* Centraliza textos internos */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza elementos internos */
 }
 
 .quadrado-funcao h2 {
@@ -121,32 +122,41 @@ body.modo-alto-contraste input {
     margin-top: 0;
     border-bottom: 4px solid var(--botao-cor-padrao);
     padding-bottom: 12px;
+    width: 100%;
 }
 
 .quadrado-funcao p {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    max-width: 600px;
 }
 
-/* --- BOTÕES EXTRA DESTACADOS --- */
+/* --- BOTÕES EXTRA DESTACADOS E CENTRALIZADOS --- */
+.botoes-coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 550px;
+    align-items: center;
+}
+
 .btn-destacado {
     display: block;
     width: 100%;
-    max-width: 550px;
-    margin: 15px auto;
     color: var(--botao-texto);
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: bold;
-    padding: 22px 28px;
-    border-radius: 14px;
+    padding: 22px 24px;
+    border-radius: 16px;
     cursor: pointer;
     text-align: center;
 }
 
-/* Botões específicos do WhatsApp */
+/* Botões do WhatsApp */
 .btn-wa {
     background-color: #128c7e;
     border: 4px solid #075e54;
-    box-shadow: 0 6px 0px #075e54; /* Sombra grossa simulando relevo físico */
+    box-shadow: 0 6px 0px #075e54; /* Sombra grossa 3D */
 }
 
 /* Botões de Salvar Lembretes */
@@ -162,35 +172,30 @@ body.modo-alto-contraste input {
 }
 
 .btn-destacado:hover, .btn-destacado:focus {
-    outline: 6px solid #ffcc00; /* Linha de seleção amarela espessa */
+    outline: 6px solid #ffcc00; /* Realce de seleção */
 }
 
-/* Alinhamento de botões em listas */
-.botoes-coluna {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-}
-
-/* Painel de Explicações Dinâmicas */
+/* Caixinha de Explicações do WhatsApp */
 .caixa-texto-ajuda {
     background-color: #e6f4ea;
     border: 4px solid #128c7e;
     padding: 25px;
-    border-radius: 14px;
+    border-radius: 16px;
     margin-top: 30px;
-    text-align: left;
+    text-align: center; /* Centraliza a explicação */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .caixa-texto-ajuda h3 {
     margin-top: 0;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .caixa-texto-ajuda p {
-    font-size: 1.3rem;
-    white-space: pre-line; /* Mantém as quebras de linha do passo a passo */
+    font-size: 1.2rem;
+    white-space: pre-line; 
+    margin: 15px auto;
 }
 
 .btn-fechar {
@@ -202,7 +207,6 @@ body.modo-alto-contraste input {
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 15px;
 }
 
 /* Formulários Internos */
@@ -211,38 +215,37 @@ body.modo-alto-contraste input {
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    width: 100%;
+    max-width: 550px;
 }
 
 label {
     font-weight: bold;
-    font-size: 1.25rem;
-    margin-top: 10px;
+    font-size: 1.2rem;
 }
 
 input {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding: 15px;
     border: 3px solid var(--borda-firme);
     border-radius: 10px;
     width: 100%;
-    max-width: 450px;
     box-sizing: border-box;
-    text-align: center;
+    text-align: center; /* Centraliza o texto digitado */
 }
 
-/* Telefones Vermelhos de Emergência */
+/* Botões Vermelhos de Emergência */
 .botao-ligar-emergencia {
     display: block;
     width: 100%;
-    max-width: 550px;
     text-align: center;
     text-decoration: none;
     background-color: var(--cor-emergencia);
     color: white;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: bold;
     padding: 22px;
-    border-radius: 14px;
+    border-radius: 16px;
     border: 4px solid #660000;
     box-shadow: 0 6px 0px #660000;
 }
@@ -251,48 +254,49 @@ input {
     outline: 6px solid #ffcc00;
 }
 
-/* Listas criadas dinamicamente */
+/* Listas criadas pelo usuário */
 .lista-itens {
     list-style: none;
     padding: 0;
     margin-top: 25px;
     width: 100%;
     max-width: 550px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .lista-itens li {
     background-color: #e6f0ff;
     padding: 18px;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid var(--botao-cor-padrao);
-    border-left: 10px solid var(--botao-cor-padrao);
+    border: 3px solid var(--botao-cor-padrao);
     font-weight: bold;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
 }
 
 .btn-remover {
     background-color: #cc0000;
     color: white;
     padding: 10px 18px;
-    font-size: 1.05rem;
+    font-size: 1rem;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
 }
 
-/* Rodapé */
-.rodape-site {
-    background-color: #0b1a30;
-    color: #ffffff;
+/* Caixinha do Rodapé */
+.caixinha-rodape {
+    background-color: var(--fundo-quadrado);
+    border: 4px solid var(--borda-firme);
+    border-radius: 20px;
     text-align: center;
-    padding: 30px 20px;
-    margin-top: 60px;
-    border-top: 6px solid #0033aa;
+    padding: 25px;
+    margin: 5px auto 40px auto;
+    max-width: 800px;
+    width: 90%;
+    box-sizing: border-box;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
