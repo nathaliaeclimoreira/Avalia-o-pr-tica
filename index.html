@@ -8,69 +8,93 @@
 </head>
 <body>
 
-    <!-- Topo do Site com Ferramentas de Acessibilidade -->
+    <!-- CABEÇALHO DO SITE -->
     <header class="topo-site">
-        <div class="ajuste-texto">
-            <button onclick="alterarFonte(1)" aria-label="Aumentar o tamanho da letra">A+ Aumentar Letra</button>
-            <button onclick="alterarFonte(-1)" aria-label="Diminuir o tamanho da letra">A- Diminuir Letra</button>
+        <div class="logo">
+            <h1>👵 Portal da Terceira Idade 👴</h1>
         </div>
-        <button id="btn-contraste" onclick="alternarContraste()" aria-label="Mudar para modo de alto contraste preto e amarelo">🌓 Alto Contraste</button>
+        <!-- Painel de Acessibilidade -->
+        <div class="painel-acessibilidade">
+            <button onclick="alterarFonte(2)" aria-label="Aumentar o tamanho do texto">🔎 Aumentar Letra</button>
+            <button onclick="alterarFonte(-2)" aria-label="Diminuir o tamanho do texto">🔍 Diminuir Letra</button>
+            <button onclick="alternarContraste()" aria-label="Mudar para cores preto e amarelo">🌓 Alto Contraste</button>
+        </div>
     </header>
 
-    <!-- Conteúdo Principal -->
+    <!-- CONTEÚDO PRINCIPAL (TUDO CENTRALIZADO) -->
     <main class="container">
+        
         <header class="boas-vindas">
-            <h1>Ajuda para o Dia a Dia</h1>
-            <p>Escolha uma das funções abaixo clicando nos botões grandes.</p>
+            <h2>Ajuda Simples para o seu Dia a Dia</h2>
+            <p>Escolha uma das funções abaixo. Todos os botões são grandes e fáceis de clicar.</p>
         </header>
 
-        <!-- Seções de Ferramentas Úteis -->
-        <div class="grade-ferramentas">
+        <!-- QUADRADO 1: COMO USAR O WHATSAPP -->
+        <section class="quadrado-funcao">
+            <h2>🟢 Guia Rápido: Como usar o WhatsApp</h2>
+            <p>Selecione sua dúvida abaixo para ler a instrução passo a passo com letras grandes:</p>
             
-            <!-- Ferramenta 1: Lembrete de Remédios -->
-            <section class="cartao-ferramenta">
-                <h2>💊 Alarme de Remédios</h2>
-                <p>Anote o nome do remédio e o horário para não esquecer.</p>
-                <div class="formulario">
-                    <label for="nome-remedio">Nome do Remédio:</label>
-                    <input type="text" id="nome-remedio" placeholder="Ex: Remédio da Pressão">
-                    
-                    <label for="hora-remedio">Horário:</label>
-                    <input type="time" id="hora-remedio">
-                    
-                    <button onclick="adicionarRemedio()">Salvar Lembrete</button>
-                </div>
-                <ul id="lista-remedios" class="lista-itens"></ul>
-            </section>
+            <div class="botoes-coluna">
+                <button onclick="mostrarAjudaWhatsapp('mensagem')" class="btn-destacado btn-wa">💬 Como mandar mensagem escrita?</button>
+                <button onclick="mostrarAjudaWhatsapp('audio')" class="btn-destacado btn-wa">🎙️ Como mandar áudio falado?</button>
+                <button onclick="mostrarAjudaWhatsapp('foto')" class="btn-destacado btn-wa">📸 Como tirar e mandar foto?</button>
+            </div>
 
-            <!-- Ferramenta 2: Lista de Compras Simples -->
-            <section class="cartao-ferramenta">
-                <h2>🛒 Lista de Compras</h2>
-                <p>Marque o que precisa comprar no mercado.</p>
-                <div class="formulario">
-                    <label for="item-compra">O que precisa comprar?</label>
-                    <input type="text" id="item-compra" placeholder="Ex: Pão, Leite, Ovos">
-                    
-                    <button onclick="adicionarItemCompra()">Adicionar na Lista</button>
-                </div>
-                <ul id="lista-compras" class="lista-itens"></ul>
-            </section>
+            <!-- Painel onde o texto da ajuda aparece -->
+            <div id="caixa-explicacao-wa" class="caixa-texto-ajuda" style="display: none;">
+                <h3 id="titulo-ajuda-wa"></h3>
+                <p id="texto-ajuda-wa"></p>
+                <button onclick="fecharAjudaWhatsapp()" class="btn-fechar">Entendi, fechar explicação</button>
+            </div>
+        </section>
 
-            <!-- Ferramenta 3: Contatos de Emergência Rápidos -->
-            <section class="cartao-ferramenta">
-                <h2>📞 Telefones Úteis</h2>
-                <p>Clique no número para ligar direto (se usar o celular).</p>
-                <div class="lista-contatos">
-                    <a href="tel:192" class="botao-ligar emergencia">🚑 SAMU (192)</a>
-                    <a href="tel:193" class="botao-ligar emergencia">🚒 Bombeiros (193)</a>
-                    <a href="tel:190" class="botao-ligar emergencia">🚓 Polícia (190)</a>
-                </div>
-            </section>
+        <!-- QUADRADO 2: LEMBRETE DE REMÉDIOS -->
+        <section class="quadrado-funcao">
+            <h2>💊 Alarme e Controle de Remédios</h2>
+            <p>Anote o nome do remédio e o horário de tomar para não se esquecer.</p>
+            <div class="formulario">
+                <label for="nome-remedio">Nome do Medicamento:</label>
+                <input type="text" id="nome-remedio" placeholder="Ex: Remédio da Pressão">
+                
+                <label for="hora-remedio">Horário do Alarme:</label>
+                <input type="time" id="hora-remedio">
+                
+                <button onclick="adicionarRemedio()" class="btn-destacado btn-salvar">Salvar Lembrete</button>
+            </div>
+            <ul id="lista-remedios" class="lista-itens"></ul>
+        </section>
 
-        </div>
+        <!-- QUADRADO 3: LISTA DE COMPRAS -->
+        <section class="quadrado-funcao">
+            <h2>🛒 Lista de Compras Simples</h2>
+            <p>Anote aqui os itens que faltam na cozinha antes de ir ao mercado.</p>
+            <div class="formulario">
+                <label for="item-compra">O que precisa comprar?</label>
+                <input type="text" id="item-compra" placeholder="Ex: Pão, Leite, Arroz">
+                
+                <button onclick="adicionarItemCompra()" class="btn-destacado btn-salvar">Adicionar na Lista</button>
+            </div>
+            <ul id="lista-compras" class="lista-itens"></ul>
+        </section>
+
+        <!-- QUADRADO 4: TELEFONES DE EMERGÊNCIA -->
+        <section class="quadrado-funcao">
+            <h2>📞 Telefones Úteis de Emergência</h2>
+            <p>Estes botões ligam diretamente caso você esteja usando um telefone celular.</p>
+            <div class="botoes-coluna">
+                <a href="tel:192" class="botao-ligar-emergencia">🚑 Ligar para o SAMU (192)</a>
+                <a href="tel:193" class="botao-ligar-emergencia">🚒 Ligar para os Bombeiros (193)</a>
+                <a href="tel:190" class="botao-ligar-emergencia"> Police 🚓 Ligar para a Polícia (190)</a>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Importação do arquivo de funcionalidades -->
+    <!-- RODAPÉ DO SITE -->
+    <footer class="rodape-site">
+        <p>Este site foi desenvolvido com foco em acessibilidade para a melhor idade. Modifique o tamanho da letra ou as cores no topo da página se precisar.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
